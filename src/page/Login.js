@@ -34,7 +34,7 @@ const Login = () => {
     fetch("https://node-api-goventure.vercel.app/login", {
       method: "GET",
       headers: { Accept: "application/json", "Content-Type": "application/json" },
-      body: JSON.stringify({ username: userName, password: password }),
+      // body: JSON.stringify({ username: userName, password: password }),
       credentials: "same-origin",
       withCredentials: true
     })
