@@ -30,11 +30,12 @@ const Login = () => {
 
     console.log(userName, "userName");
     console.log(password, "password");
+    console.log("TEST");
     fetch("https://node-api-goventure.vercel.app/login", {
       method: "POST",
       headers: { Accept: "application/json", "Content-Type": "application/json" },
       body: JSON.stringify({ username: userName, password: password }),
-      credentials: "same-origin",
+      credentials: "include",
       withCredentials: true
     })
       .then(function(response) {
