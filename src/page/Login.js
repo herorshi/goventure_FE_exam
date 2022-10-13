@@ -3,7 +3,7 @@ import { useHistory, Link } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-
+import fetch from "node-fetch";
 const MySwal = withReactContent(Swal);
 axios.create({
   withCredentials: true
@@ -30,13 +30,12 @@ const Login = () => {
 
     console.log(userName, "userName");
     console.log(password, "password");
-
     fetch("https://node-api-goventure.vercel.app/login", {
       method: "POST",
       headers: { Accept: "application/json", "Content-Type": "application/json" },
-      // body: JSON.stringify({ username: userName, password: password }),
-      withCredentials: true,
-      credentials: "omit"
+      body: JSON.stringify({ username: userName, password: password }),
+      credentials: "same-origin",
+      withCredentials: true
     })
       .then(function(response) {
         return response.json();
