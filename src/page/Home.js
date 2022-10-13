@@ -8,7 +8,7 @@ import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import "./home.css";
-
+axios.defaults.withCredentials = true
 const MySwal = withReactContent(Swal);
 let searchTime = null;
 function Home() {
@@ -32,7 +32,7 @@ function Home() {
         if (search !== "") {
           let user = await axios({
             method: "post",
-            url: "http://localhost:4000/search_user",
+            url: "https://node-api-goventure.vercel.app/search_user",
             data: { search: search },
             withCredentials: true,
             headers: {
@@ -57,7 +57,7 @@ function Home() {
         } else {
           let user = await axios({
             method: "get",
-            url: "http://localhost:4000/get_user",
+            url: "https://node-api-goventure.vercel.app/get_user",
             withCredentials: true,
             headers: {
               Accept: "application/json",
@@ -94,7 +94,7 @@ function Home() {
       if (result.isConfirmed) {
         let exitSystem = await axios({
           method: "post",
-          url: "http://localhost:4000/exit",
+          url: "https://node-api-goventure.vercel.app/exit",
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
@@ -137,7 +137,7 @@ function Home() {
         setStatusLoad(false);
         let delete_res = await axios({
           method: "post",
-          url: "http://localhost:4000/delete_user",
+          url: "https://node-api-goventure.vercel.app/delete_user",
           data: { id_user: value },
           headers: {
             Accept: "application/json",

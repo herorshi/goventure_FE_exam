@@ -28,7 +28,7 @@ const Reigster = () => {
       if (event.target.value !== "") {
         let checkUser = await axios({
           method: "post",
-          url: "http://localhost:4000/check_user",
+          url: "https://node-api-goventure.vercel.app/check_user",
           data: { username: event.target.value },
           headers: { Accept: "application/json", "Content-Type": "application/json" }
         }).then(success => {
@@ -85,7 +85,7 @@ const Reigster = () => {
     if (window.ckUser) return;
     let resRegister = await axios({
       method: "post",
-      url: "http://localhost:4000/add_user",
+      url: "https://node-api-goventure.vercel.app/add_user",
       data: {
         username,
         password,

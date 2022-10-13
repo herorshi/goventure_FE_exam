@@ -22,7 +22,7 @@ const Input = (fn, username = "") => {
         checkString = setTimeout(async () => {
           let checkUser = await axios({
             method: "post",
-            url: "http://localhost:4000/check_user",
+            url: "https://node-api-goventure.vercel.app/check_user",
             data: { username: event.target.value },
             headers: {
               Accept: "application/json",

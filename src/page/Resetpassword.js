@@ -43,7 +43,7 @@ const ResetPassword = () => {
     setStatusSend(true);
     let resReset = await axios({
       method: "post",
-      url: "http://localhost:4000/reset_password",
+      url: "https://node-api-goventure.vercel.app/reset_password",
       data: { id, password },
       headers: { Accept: "application/json", "Content-Type": "application/json" }
     }).then(success => {

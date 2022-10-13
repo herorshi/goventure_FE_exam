@@ -20,7 +20,7 @@ const ForgetPassword = () => {
     setStatusSend(true);
     let resForgot = await axios({
       method: "post",
-      url: "http://localhost:4000/forgot",
+      url: "https://node-api-goventure.vercel.app/forgot",
       data: { email: email },
       headers: { Accept: "application/json", "Content-Type": "application/json" }
     }).then(success => {

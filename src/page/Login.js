@@ -30,39 +30,57 @@ const Login = () => {
 
     console.log(userName, "userName");
     console.log(password, "password");
-    var formData = new FormData();
-    formData.append("image", "100");
-    const resLogin = await axios({
+
+    fetch("https://node-api-goventure.vercel.app/login", {
       method: "POST",
-      url: "http://localhost:4000/login",
-      data: { username: userName, password: password },
-      headers: {
-        "Content-Type": "application/json"
-      },
+      // headers: { "Content-Type": "multipart/form-data" },
+      body: JSON.stringify({ username: userName, password: password }),
       withCredentials: true
     })
-      .then(success => {
-        return success;
+      .then(function(response) {
+        return response.json();
       })
-      .catch(() => {
-        MySwal.fire({
-          icon: "error",
-          title: "username หรือ password ไม่ถูกต้อง",
-          showConfirmButton: false,
-          timer: 2000
-        });
-        return;
+      .then(value => {
+        console.log(value, "jsonxxx");
+      })
+      .catch(function(error) {
+        console.log("Request failed", error);
       });
 
-    console.log(resLogin, "resLogin");
-    if (resLogin)
-      if (resLogin.status === 200) {
-        localStorage.setItem("token", resLogin.data.token);
-        history.push({
-          pathname: "/home"
-        });
-        //   protect(resLogin.data.token);
-      }
+    // var formData = new FormData();
+    // formData.append("image", "100");
+    // const resLogin = await axios({
+    //   method: "POST",
+    //   url: "https://node-api-goventure.vercel.app/login",
+    //   data: { username: userName, password: password },
+    //   headers: {
+    //     "Access-Control-Allow-Origin": "*",
+    //     "Content-Type": "application/json"
+    //   },
+    //   withCredentials: true
+    // })
+    //   .then(success => {
+    //     return success;
+    //   })
+    //   .catch(() => {
+    //     MySwal.fire({
+    //       icon: "error",
+    //       title: "username หรือ password ไม่ถูกต้อง",
+    //       showConfirmButton: false,
+    //       timer: 2000
+    //     });
+    //     return;
+    //   });
+
+    // console.log(resLogin, "resLogin");
+    // if (resLogin)
+    //   if (resLogin.status === 200) {
+    //     localStorage.setItem("token", resLogin.data.token);
+    //     history.push({
+    //       pathname: "/home"
+    //     });
+    //     //   protect(resLogin.data.token);
+    //   }
   };
   const clearForm = () => {
     setUserName("");
@@ -74,7 +92,7 @@ const Login = () => {
     console.log(value);
     let resProtect = await axios({
       method: "post",
-      url: "http://localhost:4000/protected",
+      url: "https://node-api-goventure.vercel.app/protected",
       data: { token: value },
       withCredentials: true
       //   headers: { Accept: "application/json", "Content-Type": "application/json" }

@@ -93,7 +93,7 @@ const ModalContent = props => {
     if (props.statusUpdate) {
       let update_res = await axios({
         method: "post",
-        url: "http://localhost:4000/update_user",
+        url: "https://node-api-goventure.vercel.app/update_user",
         data: {
           username: valueUsername,
           password: valuePassword,
@@ -135,7 +135,7 @@ const ModalContent = props => {
     } else {
       let add_res = await axios({
         method: "post",
-        url: "http://localhost:4000/add_user",
+        url: "https://node-api-goventure.vercel.app/add_user",
         data: {
           username: valueUsername,
           password: valuePassword,
