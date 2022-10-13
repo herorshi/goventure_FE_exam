@@ -33,15 +33,16 @@ const Login = () => {
 
     fetch("https://node-api-goventure.vercel.app/login", {
       method: "POST",
-      // headers: { "Content-Type": "multipart/form-data" },
-      body: JSON.stringify({ username: userName, password: password }),
-      withCredentials: true
+      headers: { Accept: "application/json", "Content-Type": "application/json" },
+      // body: JSON.stringify({ username: userName, password: password }),
+      withCredentials: true,
+      credentials: "omit"
     })
       .then(function(response) {
         return response.json();
       })
       .then(value => {
-        console.log(value, "jsonxxx");
+        console.log(value, "json");
       })
       .catch(function(error) {
         console.log("Request failed", error);
